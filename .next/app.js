@@ -58,7 +58,18 @@
   function init() {
     bindEvents();
     setupHistorySync();
-    navigateTo('intro');
+
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'quiz') {
+      navigateTo('quiz', false);
+      renderCurrentQuestion();
+    } else if (hash === 'instructions') {
+      navigateTo('instructions', false);
+    } else if (hash === 'result' && state.calculatedResult) {
+      navigateTo('result', false);
+    } else {
+      navigateTo('intro', false);
+    }
   }
 
   // Eventos
@@ -115,6 +126,10 @@
       window.history.pushState({ screen: screenId, step: state.step, qIdx: state.questionIdx }, '', '#' + screenId);
     }
 
+    if (screenId === 'quiz') {
+      renderCurrentQuestion();
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -151,20 +166,20 @@
     const globalQNumber = state.step === 1 ? (state.questionIdx + 1) : (TEST_DATA.etapa1.questions.length + state.questionIdx + 1);
 
     // Contexto de cabeçalho da etapa
-    elements.stageBadge.textContent = `Etapa ${state.step} de 2`;
-    elements.stageTitle.textContent = stage.title;
-    elements.stageSubtitle.textContent = stage.subtitle;
+    if (elements.stageBadge) elements.stageBadge.textContent = `Etapa ${state.step} de 2`;
+    if (elements.stageTitle) elements.stageTitle.textContent = stage.title;
+    if (elements.stageSubtitle) elements.stageSubtitle.textContent = stage.subtitle;
 
     // Progresso
     const progressPercent = Math.round(((state.questionIdx) / totalInStage) * 100);
-    elements.progressText.textContent = `Pergunta ${state.questionIdx + 1} de ${totalInStage}`;
-    elements.progressBarFill.style.width = `${progressPercent}%`;
+    if (elements.progressText) elements.progressText.textContent = `Pergunta ${state.questionIdx + 1} de ${totalInStage}`;
+    if (elements.progressBarFill) elements.progressBarFill.style.width = `${progressPercent}%`;
 
     // Questão
-    elements.questionNumberBadge.textContent = `Item ${globalQNumber} de ${TEST_DATA.info.totalQuestions}`;
-    elements.questionTitle.textContent = q.text;
-    elements.optionTextA.textContent = q.optionA.label;
-    elements.optionTextB.textContent = q.optionB.label;
+    if (elements.questionNumberBadge) elements.questionNumberBadge.textContent = `Item ${globalQNumber} de ${TEST_DATA.info.totalQuestions}`;
+    if (elements.questionTitle) elements.questionTitle.textContent = q.text;
+    if (elements.optionTextA) elements.optionTextA.textContent = q.optionA.label;
+    if (elements.optionTextB) elements.optionTextB.textContent = q.optionB.label;
 
     // Verificar se já foi respondida
     const savedAnswer = getAnswerForQuestion(state.step, q.id);

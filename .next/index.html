@@ -39,59 +39,33 @@
       </button>
     </header>
 
-    <!-- TELA 1: Início / Apresentação Imersiva (Zero Scroll & Motion Design Nobre) -->
+    <!-- TELA 1: Início / Apresentação Nobre e Limpa (Zero Scroll) -->
     <main class="screen" id="screen-intro">
       
-      <!-- Fundo de Luz Orgânica e Atmosfera (Glow & Aurora) -->
+      <!-- Fundo de Luz Orgânica e Atmosfera Suave -->
       <div class="hero-atmosphere" aria-hidden="true">
         <div class="aura-orb aura-orb-primary"></div>
-        <div class="aura-orb aura-orb-gold"></div>
         <div class="aura-orb aura-orb-sage"></div>
       </div>
 
       <div class="card card-hero card-hero-cinematic">
         
-        <!-- Sistema Central: Logo da Célula & Orbe dos 4 Temperamentos -->
-        <div class="hero-visual-center">
-          <!-- Anéis Orbitais com Micro-Orbes dos Temperamentos -->
-          <div class="temperament-orbit-system" aria-hidden="true">
-            <div class="orbit-ring orbit-ring-outer">
-              <span class="orbit-dot dot-fire" title="Colérico (Fogo)"></span>
-              <span class="orbit-dot dot-water" title="Fleumático (Água)"></span>
-            </div>
-            <div class="orbit-ring orbit-ring-inner">
-              <span class="orbit-dot dot-air" title="Sanguíneo (Ar)"></span>
-              <span class="orbit-dot dot-earth" title="Melancólico (Terra)"></span>
-            </div>
-          </div>
-
-          <!-- Emblema Central Flutuante com Glow de Luz Divina -->
-          <div class="hero-emblem-wrapper">
-            <div class="hero-emblem-glow" aria-hidden="true"></div>
-            <div class="hero-emblem floating-emblem">
-              <img src="assets/logo_white.png" alt="Emblema Célula Esperança" width="68" height="68">
-            </div>
+        <!-- Emblema Central com Transição Elegante -->
+        <div class="hero-emblem-wrapper stagger-item" style="--delay: 1;">
+          <div class="hero-emblem-glow" aria-hidden="true"></div>
+          <div class="hero-emblem floating-emblem">
+            <img src="assets/logo_white.png" alt="Emblema Célula Esperança" width="68" height="68">
           </div>
         </div>
 
-        <!-- Badge Editorial Superior -->
-        <div class="hero-kicker stagger-item" style="--delay: 1;">
-          <span class="hero-badge">
-            <svg class="badge-icon-cross" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M11 2h2v7h7v2h-7v11h-2v-11h-7v-2h7z"/>
-            </svg>
-            Jornada de Edificação Pessoal
-          </span>
-        </div>
-
-        <!-- Título Principal com Tipografia Nobre -->
+        <!-- Título Principal com Revelação Fluida -->
         <h1 class="hero-title stagger-item" style="--delay: 2;">
           Descubra o seu <br><span class="title-highlight">Temperamento</span>
         </h1>
 
-        <!-- Subtítulo e Descrição de Acolhimento -->
+        <!-- Subtítulo e Descrição Limpa -->
         <p class="hero-desc stagger-item" style="--delay: 3;">
-          Uma experiência de autoconhecimento, compreensão das pessoas e maturidade cristã na comunhão da célula.
+          Uma experiência de autoconhecimento e maturidade cristã.
         </p>
 
         <!-- Mini-Legenda Elegante dos 4 Temperamentos -->
@@ -125,7 +99,7 @@
       </div>
 
       <footer class="app-footer-compact stagger-item" style="--delay: 7;">
-        Célula Esperança • Igreja Batista Connect
+        Célula Esperança
       </footer>
     </main>
 
@@ -197,6 +171,7 @@
         <div class="question-meta-row">
           <span class="question-number-badge" id="question-number-badge">Item 1 de 33</span>
           <span class="stage-sub-hint" id="stage-title">Ritmo e Expressão</span>
+          <span id="stage-subtitle" style="display:none;"></span>
         </div>
 
         <h3 class="question-title" id="question-title">Texto da pergunta...</h3>
