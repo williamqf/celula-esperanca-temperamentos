@@ -45,4 +45,18 @@ function doGet(e) {
 `;
 
 fs.writeFileSync(path.join(gasDir, 'Codigo.gs'), codigoGs, 'utf8');
-console.log('Successfully generated google-apps-script/Index.html (' + bundledHtml.length + ' bytes) and Codigo.gs!');
+
+// Também copia para .next caso o Netlify esteja configurado para publicar da pasta .next
+const nextDir = path.join(baseDir, '.next');
+if (!fs.existsSync(nextDir)) fs.mkdirSync(nextDir, { recursive: true });
+fs.copyFileSync(path.join(baseDir, 'index.html'), path.join(nextDir, 'index.html'));
+fs.copyFileSync(path.join(baseDir, 'style.css'), path.join(nextDir, 'style.css'));
+fs.copyFileSync(path.join(baseDir, 'app.js'), path.join(nextDir, 'app.js'));
+fs.copyFileSync(path.join(baseDir, 'data.js'), path.join(nextDir, 'data.js'));
+const nextAssets = path.join(nextDir, 'assets');
+if (!fs.existsSync(nextAssets)) fs.mkdirSync(nextAssets, { recursive: true });
+for (const f of fs.readdirSync(path.join(baseDir, 'assets'))) {
+  fs.copyFileSync(path.join(baseDir, 'assets', f), path.join(nextAssets, f));
+}
+
+console.log('Successfully generated google-apps-script/Index.html and .next folder!');
