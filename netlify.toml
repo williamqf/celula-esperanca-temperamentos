@@ -1,5 +1,6 @@
 # Netlify configuration for Célula Esperança - Teste de Temperamentos
 [build]
+  command = "node build_gas.js"
   publish = "."
 
 [[headers]]
