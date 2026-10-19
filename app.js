@@ -652,7 +652,7 @@
     const t = state.calculatedResult.temperament;
     const s = state.calculatedResult.scores;
 
-    const shareText = `🕊️ *Meu Teste de Temperamentos — Célula Esperança*\n\n` +
+    const shareText = `🕊️ *Meu Teste de Temperamento — Célula Esperança*\n\n` +
       `Descobri que meu temperamento predominante é o *${t.name.toUpperCase()}* (${t.elementTitle})!\n\n` +
       `✨ *Destaque:* ${t.badge}\n` +
       `📊 *Equilíbrio:* ${s.percentQuente}% Quente / ${s.percentFrio}% Frio • ${s.percentUmido}% Úmido / ${s.percentSeco}% Seco\n` +
@@ -662,7 +662,7 @@
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `Resultado do Teste de Temperamentos - ${t.name}`,
+          title: `Resultado do Teste de Temperamento - ${t.name}`,
           text: shareText
         });
         showToast('Compartilhado com sucesso!');
