@@ -1022,6 +1022,122 @@ h1.hero-title {
 }
 
 /* ===================================================================
+   ACORDEÕES INTERATIVOS (TELA DE RESULTADO DINÂMICA)
+   =================================================================== */
+.result-accordions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.result-accordion-item {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(36, 59, 50, 0.05);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.result-accordion-item[open] {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(36, 59, 50, 0.1);
+}
+
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: #FFFFFF;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: background-color var(--transition-fast);
+}
+
+.accordion-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.result-accordion-item[open] .accordion-trigger {
+  background: rgba(36, 59, 50, 0.03);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordion-trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.accordion-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(36, 59, 50, 0.08);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.result-accordion-item[open] .accordion-icon-box {
+  background: var(--color-primary);
+  color: #FFFFFF;
+}
+
+.accordion-icon-box svg {
+  width: 18px;
+  height: 18px;
+}
+
+.accordion-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.3;
+}
+
+.accordion-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), color var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.result-accordion-item[open] .accordion-chevron {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.accordion-content {
+  padding: 16px 18px 20px;
+  background: #FFFFFF;
+  animation: accordionFadeDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes accordionFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================================================
    CARD DE CONVITE FLYER DA CÉLULA ESPERANÇA
    =================================================================== */
 .celula-invite-card {
@@ -1048,7 +1164,7 @@ h1.hero-title {
   pointer-events: none;
 }
 
-.invite-badge-tag {
+.celula-invite-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1063,7 +1179,7 @@ h1.hero-title {
   margin-bottom: 12px;
 }
 
-.invite-title {
+.celula-invite-title {
   font-size: 1.35rem;
   font-weight: 800;
   line-height: 1.25;
@@ -1071,92 +1187,110 @@ h1.hero-title {
   margin-bottom: 10px;
 }
 
-.invite-desc {
+.celula-invite-desc {
   font-size: 0.94rem;
   color: #DDE2D8;
   line-height: 1.5;
   margin-bottom: 18px;
 }
 
-.invite-details-list {
-  background: rgba(0, 0, 0, 0.22);
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.invite-detail-item {
+.celula-info-row {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.22);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
 }
 
-.invite-detail-item svg {
-  width: 22px;
-  height: 22px;
+.celula-info-icon {
   color: var(--color-accent);
   flex-shrink: 0;
   margin-top: 2px;
 }
 
-.invite-detail-item .info-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  font-weight: 700;
-  letter-spacing: 0.04em;
+.celula-info-text strong {
   display: block;
-}
-
-.invite-detail-item .info-val {
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   color: #FFFFFF;
-  font-weight: 600;
-  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 2px;
 }
 
-.invite-actions {
+.celula-info-text span {
+  display: block;
+  font-size: 0.84rem;
+  color: #DDE2D8;
+  line-height: 1.35;
+}
+
+.celula-actions {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: 18px;
 }
 
+/* Botões do Convite (Alto Contraste e Identificação Imediata) */
 .btn-invite-maps {
-  background-color: #FFFFFF;
-  color: var(--color-primary-dark);
-  font-weight: 700;
-  text-decoration: none;
+  background-color: #FFFFFF !important;
+  color: #243B32 !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
   min-height: 52px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 2px solid #FFFFFF;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.btn-invite-maps svg {
+  color: #EA4335 !important;
 }
 
 .btn-invite-maps:hover {
-  background-color: #F6F4EF;
+  background-color: #F6F4EF !important;
+  transform: translateY(-2px);
 }
 
-.btn-invite-wpp {
-  background-color: #25D366;
-  color: #FFFFFF;
-  font-weight: 700;
-  text-decoration: none;
+.btn-invite-whatsapp {
+  background-color: #25D366 !important;
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
   min-height: 52px;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 2px solid #25D366;
+  transition: transform var(--transition-fast), background var(--transition-fast);
 }
 
-.btn-invite-wpp:hover {
-  background-color: #20BA5A;
+.btn-invite-whatsapp svg {
+  color: #FFFFFF !important;
 }
 
-.invite-footer-note {
+.btn-invite-whatsapp:hover {
+  background-color: #20BA5A !important;
+  border-color: #20BA5A !important;
+  transform: translateY(-2px);
+}
+
+.celula-footer-tag {
   margin-top: 16px;
   text-align: center;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: #A3AE9B;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 /* Ações de Compartilhamento e Salvar */
@@ -2847,48 +2981,89 @@ if (typeof module !== "undefined" && module.exports) {
           <!-- Nuances / Subtipos -->
           ${nuancesHtml}
 
-          <!-- Forças e Qualidades -->
-          <div class="section-block">
-            <h3 class="section-heading">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              Forças e Qualidades Naturais
-            </h3>
-            <div class="traits-grid">
-              ${qualidadesHtml}
-            </div>
-          </div>
+          <!-- Acordeões Interativos com Animações Fluidas -->
+          <div class="result-accordions-group">
+            
+            <!-- 1. Na Célula Esperança (Destaque Aberto por Padrão) -->
+            <details class="result-accordion-item" open>
+              <summary class="accordion-trigger">
+                <span class="accordion-trigger-left">
+                  <span class="accordion-icon-box">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                  </span>
+                  <span class="accordion-title">Sua Atuação na Célula Esperança</span>
+                </span>
+                <span class="accordion-chevron">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M19 9l-7 7-7-7"/></svg>
+                </span>
+              </summary>
+              <div class="accordion-content">
+                <p style="font-size:0.95rem; line-height:1.65; color:var(--color-text); margin:0;">
+                  ${t.convivenciaCelula}
+                </p>
+              </div>
+            </details>
 
-          <!-- Pontos de Atenção -->
-          <div class="section-block">
-            <h3 class="section-heading">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-              Pontos de Atenção e Desafios
-            </h3>
-            <div class="traits-grid">
-              ${pontosHtml}
-            </div>
-          </div>
+            <!-- 2. Forças e Qualidades Naturais -->
+            <details class="result-accordion-item">
+              <summary class="accordion-trigger">
+                <span class="accordion-trigger-left">
+                  <span class="accordion-icon-box">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </span>
+                  <span class="accordion-title">Forças e Qualidades Naturais</span>
+                </span>
+                <span class="accordion-chevron">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M19 9l-7 7-7-7"/></svg>
+                </span>
+              </summary>
+              <div class="accordion-content">
+                <div class="traits-grid">
+                  ${qualidadesHtml}
+                </div>
+              </div>
+            </details>
 
-          <!-- Passos de Amadurecimento -->
-          <div class="section-block">
-            <h3 class="section-heading">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-              Caminhos Práticos de Amadurecimento
-            </h3>
-            <ul style="padding-left:20px; font-size:0.92rem; color:var(--color-text);">
-              ${amadurecimentoHtml}
-            </ul>
-          </div>
+            <!-- 3. Pontos de Atenção e Desafios -->
+            <details class="result-accordion-item">
+              <summary class="accordion-trigger">
+                <span class="accordion-trigger-left">
+                  <span class="accordion-icon-box">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                  </span>
+                  <span class="accordion-title">Pontos de Atenção e Desafios</span>
+                </span>
+                <span class="accordion-chevron">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M19 9l-7 7-7-7"/></svg>
+                </span>
+              </summary>
+              <div class="accordion-content">
+                <div class="traits-grid">
+                  ${pontosHtml}
+                </div>
+              </div>
+            </details>
 
-          <!-- Na Célula Esperança -->
-          <div class="section-block">
-            <h3 class="section-heading">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-              Sua Atuação na Célula Esperança
-            </h3>
-            <p style="font-size:0.93rem; line-height:1.6; color:var(--color-text);">
-              ${t.convivenciaCelula}
-            </p>
+            <!-- 4. Caminhos Práticos de Amadurecimento -->
+            <details class="result-accordion-item">
+              <summary class="accordion-trigger">
+                <span class="accordion-trigger-left">
+                  <span class="accordion-icon-box">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                  </span>
+                  <span class="accordion-title">Caminhos Práticos de Amadurecimento</span>
+                </span>
+                <span class="accordion-chevron">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M19 9l-7 7-7-7"/></svg>
+                </span>
+              </summary>
+              <div class="accordion-content">
+                <ul style="padding-left:18px; font-size:0.92rem; color:var(--color-text); margin:0;">
+                  ${amadurecimentoHtml}
+                </ul>
+              </div>
+            </details>
+
           </div>
 
           <!-- Princípio Bíblico -->
@@ -2898,9 +3073,9 @@ if (typeof module !== "undefined" && module.exports) {
             <div class="scripture-message">${t.reflexaoCrista.mensagem}</div>
           </div>
 
-          <!-- Convite Especial para a Célula Esperança -->
+          <!-- Convite Especial para a Célula Esperança (Flyer) -->
           <div class="celula-invite-card">
-            <div class="celula-invite-badge">Comunhão & Crescimento</div>
+            <div class="celula-invite-badge">Comunhão &amp; Crescimento</div>
             <h3 class="celula-invite-title">Venha nos visitar na Célula Esperança!</h3>
             <p class="celula-invite-desc">
               Você é nosso convidado de honra para viver momentos de fé, amizade sincera e edificação da Palavra de Deus. Será uma alegria imensa receber você e sua família!
@@ -2908,17 +3083,17 @@ if (typeof module !== "undefined" && module.exports) {
             
             <div class="celula-info-row">
               <span class="celula-info-icon">
-                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
               </span>
               <div class="celula-info-text">
-                <strong>Todo Sábado às 19:30h</strong>
-                <span>Reunião semanal de louvor, estudo e comunhão</span>
+                <strong>Sábado às 19:30h</strong>
+                <span>Reunião de louvor, estudo e comunhão</span>
               </div>
             </div>
 
             <div class="celula-info-row">
               <span class="celula-info-icon">
-                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               </span>
               <div class="celula-info-text">
                 <strong>Rua Marieta Honorato de Oliveira, 68</strong>
@@ -2927,13 +3102,13 @@ if (typeof module !== "undefined" && module.exports) {
             </div>
 
             <div class="celula-actions">
-              <a href="https://www.google.com/maps/search/?api=1&query=Rua+Marieta+Honorato+de+Oliveira,+68+-+Palmital+-+Santa+Luzia" target="_blank" rel="noopener noreferrer" class="btn btn-maps">
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                Abrir no Google Maps
+              <a href="https://www.google.com/maps/search/?api=1&query=Rua+Marieta+Honorato+de+Oliveira,+68+-+Palmital+-+Santa+Luzia" target="_blank" rel="noopener noreferrer" class="btn btn-invite-maps">
+                <svg width="19" height="19" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>Abrir no Google Maps</span>
               </a>
-              <a href="https://wa.me/5531991835141?text=Ol%C3%A1%21%20Fiz%20o%20Teste%20de%20Temperamentos%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20C%C3%A9lula%20Esperan%C3%A7a." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                Falar no WhatsApp
+              <a href="https://wa.me/5531991835141?text=Ol%C3%A1%21%20Fiz%20o%20Teste%20de%20Temperamentos%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20C%C3%A9lula%20Esperan%C3%A7a." target="_blank" rel="noopener noreferrer" class="btn btn-invite-whatsapp">
+                <svg width="19" height="19" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <span>Falar no WhatsApp</span>
               </a>
             </div>
 
@@ -2942,6 +3117,11 @@ if (typeof module !== "undefined" && module.exports) {
 
           <!-- Nota de Esclarecimento Pastoral -->
           <div style="margin-top:24px; padding:16px; background:var(--color-bg); border-radius:var(--radius-sm); font-size:0.8rem; color:var(--color-text-muted); line-height:1.5;">
+            <strong>Nota de reflexão:</strong> O temperamento descreve tendências e reflexos instintivos, mas não define os limites de quem você é em Deus. Pelo poder do Espírito Santo e pela prática do Evangelho em comunidade, todo discípulo de Cristo é capacitado a frutificar em mansidão, domínio próprio e santidade.
+          </div>
+        </div>
+      </div>
+    `;
             <strong>Nota de reflexão:</strong> O temperamento descreve tendências e reflexos instintivos, mas não define os limites de quem você é em Deus. Pelo poder do Espírito Santo e pela prática do Evangelho em comunidade, todo discípulo de Cristo é capacitado a frutificar em mansidão, domínio próprio e santidade.
           </div>
         </div>
