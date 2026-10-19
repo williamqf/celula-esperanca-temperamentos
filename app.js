@@ -200,8 +200,14 @@
     elements.optionB.classList.toggle('selected', optionChoice === 'B');
     elements.validationNotice.classList.remove('visible');
 
-    // Pequeno feedback de transição automática suave após 240ms se preferir, ou apenas seleção
-    // Vamos permitir avanço com botão para controle do usuário ou toque
+    // Vibração tátil sutil em dispositivos móveis compatíveis
+    if (navigator.vibrate) {
+      try {
+        navigator.vibrate(25);
+      } catch (e) {
+        // Ignora silenciosamente se bloqueado por permissão
+      }
+    }
   }
 
   function getAnswerForQuestion(step, questionId) {
@@ -531,6 +537,48 @@
             <div class="scripture-reference">Princípio Bíblico • ${t.reflexaoCrista.versiculo}</div>
             <div class="scripture-verse">"${t.reflexaoCrista.textoVersiculo}"</div>
             <div class="scripture-message">${t.reflexaoCrista.mensagem}</div>
+          </div>
+
+          <!-- Convite Especial para a Célula Esperança -->
+          <div class="celula-invite-card">
+            <div class="celula-invite-badge">Comunhão & Crescimento</div>
+            <h3 class="celula-invite-title">Venha nos visitar na Célula Esperança!</h3>
+            <p class="celula-invite-desc">
+              Você é nosso convidado de honra para viver momentos de fé, amizade sincera e edificação da Palavra de Deus. Será uma alegria imensa receber você e sua família!
+            </p>
+            
+            <div class="celula-info-row">
+              <span class="celula-info-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </span>
+              <div class="celula-info-text">
+                <strong>Todo Sábado às 19:30h</strong>
+                <span>Reunião semanal de louvor, estudo e comunhão</span>
+              </div>
+            </div>
+
+            <div class="celula-info-row">
+              <span class="celula-info-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </span>
+              <div class="celula-info-text">
+                <strong>Rua Marieta Honorato de Oliveira, 68</strong>
+                <span>Bairro Palmital — Santa Luzia / MG</span>
+              </div>
+            </div>
+
+            <div class="celula-actions">
+              <a href="https://www.google.com/maps/search/?api=1&query=Rua+Marieta+Honorato+de+Oliveira,+68+-+Palmital+-+Santa+Luzia" target="_blank" rel="noopener noreferrer" class="btn btn-maps">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Abrir no Google Maps
+              </a>
+              <a href="https://wa.me/5531991835141?text=Ol%C3%A1%21%20Fiz%20o%20Teste%20de%20Temperamentos%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20C%C3%A9lula%20Esperan%C3%A7a." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                Falar no WhatsApp
+              </a>
+            </div>
+
+            <div class="celula-footer-tag">Batista Connect • Igreja em Células</div>
           </div>
 
           <!-- Nota de Esclarecimento Pastoral -->

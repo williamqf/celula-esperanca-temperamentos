@@ -24,10 +24,10 @@
 
   <div class="app-container">
 
-    <!-- Cabeçalho Institucional -->
+    <!-- Cabeçalho Institucional Compacto -->
     <header class="app-header" id="app-header">
       <div class="brand-wrapper">
-        <img src="assets/logo_white.png" alt="Logo Célula Esperança" class="brand-logo" width="44" height="44">
+        <img src="assets/logo_white.png" alt="Logo Célula Esperança" class="brand-logo" width="38" height="38">
         <div>
           <div class="brand-title">Célula Esperança</div>
           <div class="brand-subtitle">Teste de Temperamentos</div>
@@ -39,135 +39,139 @@
       </button>
     </header>
 
-    <!-- TELA 1: Início / Apresentação -->
+    <!-- TELA 1: Início / Apresentação (Zero Scroll) -->
     <main class="screen" id="screen-intro">
       <div class="card card-hero">
         <div class="hero-emblem">
-          <img src="assets/logo_white.png" alt="Emblema Célula Esperança" width="80" height="80">
+          <img src="assets/logo_white.png" alt="Emblema Célula Esperança" width="64" height="64">
         </div>
-        <h1 class="hero-title">Descubra mais sobre seu temperamento</h1>
+        <h1 class="hero-title">Descubra seu temperamento</h1>
         <p class="hero-desc">
-          Uma jornada de autoconhecimento, compreensão dos relacionamentos e crescimento mútuo para a nossa célula.
+          Uma jornada de autoconhecimento, compreensão dos relacionamentos e crescimento cristão na célula.
         </p>
 
         <div class="privacy-badge">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           <div>
-            <strong>100% Anônimo e Seguro:</strong> suas respostas são processadas exclusivamente no seu aparelho. Nenhum dado é coletado ou salvo em servidor.
+            <strong>100% Anônimo e Seguro:</strong> suas respostas não saem do seu aparelho celular.
           </div>
         </div>
 
-        <button type="button" class="btn btn-primary btn-block" id="btn-start-intro">
+        <button type="button" class="btn btn-primary btn-block btn-lg" id="btn-start-intro">
           <span>Começar Teste</span>
-          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
       </div>
 
-      <footer class="app-footer">
-        Célula Esperança • Comunidade Cristã em Células
+      <footer class="app-footer-compact">
+        Célula Esperança • Batista Connect
       </footer>
     </main>
 
-    <!-- TELA 2: Instruções e Orientações -->
+    <!-- TELA 2: Instruções Compactas (Zero Scroll para Idosos) -->
     <section class="screen" id="screen-instructions">
-      <div class="card">
-        <h2 style="font-size:1.3rem; color:var(--color-primary); margin-bottom:12px; font-weight:700;">
-          Orientações para o Teste
-        </h2>
-        <p style="font-size:0.95rem; color:var(--color-text-muted); line-height:1.55;">
-          Antes de iniciar, leia com atenção as orientações abaixo para que o resultado expresse com clareza o seu perfil:
-        </p>
+      <div class="card card-instructions">
+        <div class="instructions-header">
+          <span class="badge-tag">Guia Rápido</span>
+          <h2 class="instructions-title">Orientações para o Teste</h2>
+        </div>
 
-        <div class="instruction-list">
-          <div class="instruction-item">
-            <div class="instruction-num">1</div>
-            <div class="instruction-text">
-              <h3>Responda com o seu instinto</h3>
-              <p>O temperamento diz respeito a impulsos e tendências naturais. Escolha o que você faria de forma mais espontânea, não o que parece mais nobre ou ideal.</p>
+        <div class="instruction-grid-compact">
+          <div class="instruction-box">
+            <div class="inst-icon">⚡</div>
+            <div class="inst-body">
+              <strong>Seja Espontâneo(a)</strong>
+              <p>Responda com o seu primeiro impulso natural, sem tentar achar a opção "certa".</p>
             </div>
           </div>
 
-          <div class="instruction-item">
-            <div class="instruction-num">2</div>
-            <div class="instruction-text">
-              <h3>Não existe temperamento ruim</h3>
-              <p>Todos os temperamentos possuem forças admiráveis e desafios a serem aperfeiçoados pelo Espírito Santo. Seja muito sincero(a).</p>
+          <div class="instruction-box">
+            <div class="inst-icon">🕊️</div>
+            <div class="inst-body">
+              <strong>Sem Perfil Ruim</strong>
+              <p>Todos os temperamentos têm qualidades dadas por Deus e pontos para amadurecer.</p>
             </div>
           </div>
 
-          <div class="instruction-item">
-            <div class="instruction-num">3</div>
-            <div class="instruction-text">
-              <h3>Duas etapas objetivas</h3>
-              <p>O teste é composto por duas etapas: na 1ª avaliamos o seu ritmo de energia (Quente vs Frio); na 2ª, a flexibilidade e fixação de marcas (Úmido vs Seco).</p>
+          <div class="instruction-box">
+            <div class="inst-icon">🎯</div>
+            <div class="inst-body">
+              <strong>Duas Etapas Simples</strong>
+              <p>1ª: Ritmo e Energia (Quente/Frio).<br>2ª: Flexibilidade e Marcas (Úmido/Seco).</p>
             </div>
           </div>
 
-          <div class="instruction-item">
-            <div class="instruction-num">4</div>
-            <div class="instruction-text">
-              <h3>Ferramenta de reflexão cristã</h3>
-              <p>Este teste não é um diagnóstico psicológico, mas uma ferramenta prática de autopercepção e amor comunitário na célula.</p>
+          <div class="instruction-box">
+            <div class="inst-icon">🤝</div>
+            <div class="inst-body">
+              <strong>Para Edificar a Célula</strong>
+              <p>Ferramenta de autopercepção e amor comunitário entre irmãos em Cristo.</p>
             </div>
           </div>
         </div>
 
-        <button type="button" class="btn btn-primary btn-block" id="btn-start-step1">
+        <button type="button" class="btn btn-primary btn-block btn-lg" id="btn-start-step1">
           <span>Iniciar Primeira Etapa</span>
-          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
       </div>
     </section>
 
-    <!-- TELA 3: Questionário Interativo -->
+    <!-- TELA 3: Questionário Otimizado e Acessível (Zero Scroll) -->
     <section class="screen" id="screen-quiz">
       
-      <!-- Progresso -->
-      <div class="progress-container">
-        <div class="stage-badge-wrapper">
-          <span class="stage-badge" id="stage-badge">Etapa 1 de 2</span>
-          <span class="progress-text" id="progress-text">Pergunta 1 de 21</span>
+      <!-- Topo Integrado: Etapa, Progresso e Barra -->
+      <div class="quiz-top-bar">
+        <div class="quiz-status-row">
+          <span class="stage-pill" id="stage-badge">Etapa 1 de 2</span>
+          <span class="progress-pill-counter" id="progress-text">Pergunta 1 de 21</span>
         </div>
-        <div class="progress-bar-bg">
+        <div class="progress-bar-bg" aria-hidden="true">
           <div class="progress-bar-fill" id="progress-bar-fill"></div>
         </div>
       </div>
 
-      <!-- Contexto da Etapa Atual -->
-      <div class="stage-context-box">
-        <h2 id="stage-title">Etapa 1 — Ritmo e Expressão</h2>
-        <p id="stage-subtitle">Descubra se sua tendência natural é Quente ou Fria</p>
-      </div>
-
-      <!-- Cartão da Pergunta -->
+      <!-- Cartão da Pergunta Ergonômico -->
       <div class="question-card" role="region" aria-live="polite">
-        <span class="question-number-badge" id="question-number-badge">Item 1 de 33</span>
-        <h3 class="question-title" id="question-title">Texto da pergunta aqui...</h3>
+        <div class="question-meta-row">
+          <span class="question-number-badge" id="question-number-badge">Item 1 de 33</span>
+          <span class="stage-sub-hint" id="stage-title">Ritmo e Expressão</span>
+        </div>
+
+        <h3 class="question-title" id="question-title">Texto da pergunta...</h3>
 
         <div class="options-group">
           <button type="button" class="option-btn" id="option-a" tabindex="0">
-            <div class="option-indicator"></div>
+            <div class="option-indicator" aria-hidden="true">
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </div>
             <div class="option-text" id="option-text-a">Alternativa A</div>
           </button>
 
           <button type="button" class="option-btn" id="option-b" tabindex="0">
-            <div class="option-indicator"></div>
+            <div class="option-indicator" aria-hidden="true">
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </div>
             <div class="option-text" id="option-text-b">Alternativa B</div>
           </button>
         </div>
 
         <div class="validation-notice" id="validation-notice">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
-          <span>Por favor, selecione uma das duas alternativas para continuar.</span>
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+          <span>Toque em uma das opções acima para continuar.</span>
         </div>
       </div>
 
-      <!-- Controles de Navegação -->
+      <!-- Controles de Navegação Elevados (Longe do Selo Netlify) -->
       <div class="nav-controls">
         <button type="button" class="btn btn-secondary" id="btn-prev">Anterior</button>
         <button type="button" class="btn btn-primary" id="btn-next">
           <span>Próxima</span>
-          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
     </section>
