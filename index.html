@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#243B32">
+  <meta name="description" content="Teste de Temperamentos — Célula Esperança. Uma jornada de autoconhecimento, relacionamentos e crescimento cristão.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <title>Célula Esperança — Teste de Temperamentos</title>
+
+  <!-- Favicon / Ícone -->
+  <link rel="icon" type="image/png" href="assets/logo_green.png">
+  <link rel="apple-touch-icon" href="assets/logo_green.png">
+
+  <!-- Estilos Globais -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Biblioteca html2pdf (CDN com fallback gracioso para print nativo) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Cabeçalho Institucional -->
+    <header class="app-header" id="app-header">
+      <div class="brand-wrapper">
+        <img src="assets/logo_white.png" alt="Logo Célula Esperança" class="brand-logo" width="44" height="44">
+        <div>
+          <div class="brand-title">Célula Esperança</div>
+          <div class="brand-subtitle">Teste de Temperamentos</div>
+        </div>
+      </div>
+      <button type="button" class="header-action-btn" id="btn-reset-header" title="Reiniciar Teste" style="display: none;">
+        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        <span>Reiniciar</span>
+      </button>
+    </header>
+
+    <!-- TELA 1: Início / Apresentação -->
+    <main class="screen" id="screen-intro">
+      <div class="card card-hero">
+        <div class="hero-emblem">
+          <img src="assets/logo_white.png" alt="Emblema Célula Esperança" width="80" height="80">
+        </div>
+        <h1 class="hero-title">Descubra mais sobre seu temperamento</h1>
+        <p class="hero-desc">
+          Uma jornada de autoconhecimento, compreensão dos relacionamentos e crescimento mútuo para a nossa célula.
+        </p>
+
+        <div class="privacy-badge">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          <div>
+            <strong>100% Anônimo e Seguro:</strong> suas respostas são processadas exclusivamente no seu aparelho. Nenhum dado é coletado ou salvo em servidor.
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" id="btn-start-intro">
+          <span>Começar Teste</span>
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+
+      <footer class="app-footer">
+        Célula Esperança • Comunidade Cristã em Células
+      </footer>
+    </main>
+
+    <!-- TELA 2: Instruções e Orientações -->
+    <section class="screen" id="screen-instructions">
+      <div class="card">
+        <h2 style="font-size:1.3rem; color:var(--color-primary); margin-bottom:12px; font-weight:700;">
+          Orientações para o Teste
+        </h2>
+        <p style="font-size:0.95rem; color:var(--color-text-muted); line-height:1.55;">
+          Antes de iniciar, leia com atenção as orientações abaixo para que o resultado expresse com clareza o seu perfil:
+        </p>
+
+        <div class="instruction-list">
+          <div class="instruction-item">
+            <div class="instruction-num">1</div>
+            <div class="instruction-text">
+              <h3>Responda com o seu instinto</h3>
+              <p>O temperamento diz respeito a impulsos e tendências naturais. Escolha o que você faria de forma mais espontânea, não o que parece mais nobre ou ideal.</p>
+            </div>
+          </div>
+
+          <div class="instruction-item">
+            <div class="instruction-num">2</div>
+            <div class="instruction-text">
+              <h3>Não existe temperamento ruim</h3>
+              <p>Todos os temperamentos possuem forças admiráveis e desafios a serem aperfeiçoados pelo Espírito Santo. Seja muito sincero(a).</p>
+            </div>
+          </div>
+
+          <div class="instruction-item">
+            <div class="instruction-num">3</div>
+            <div class="instruction-text">
+              <h3>Duas etapas objetivas</h3>
+              <p>O teste é composto por duas etapas: na 1ª avaliamos o seu ritmo de energia (Quente vs Frio); na 2ª, a flexibilidade e fixação de marcas (Úmido vs Seco).</p>
+            </div>
+          </div>
+
+          <div class="instruction-item">
+            <div class="instruction-num">4</div>
+            <div class="instruction-text">
+              <h3>Ferramenta de reflexão cristã</h3>
+              <p>Este teste não é um diagnóstico psicológico, mas uma ferramenta prática de autopercepção e amor comunitário na célula.</p>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" id="btn-start-step1">
+          <span>Iniciar Primeira Etapa</span>
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- TELA 3: Questionário Interativo -->
+    <section class="screen" id="screen-quiz">
+      
+      <!-- Progresso -->
+      <div class="progress-container">
+        <div class="stage-badge-wrapper">
+          <span class="stage-badge" id="stage-badge">Etapa 1 de 2</span>
+          <span class="progress-text" id="progress-text">Pergunta 1 de 21</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <!-- Contexto da Etapa Atual -->
+      <div class="stage-context-box">
+        <h2 id="stage-title">Etapa 1 — Ritmo e Expressão</h2>
+        <p id="stage-subtitle">Descubra se sua tendência natural é Quente ou Fria</p>
+      </div>
+
+      <!-- Cartão da Pergunta -->
+      <div class="question-card" role="region" aria-live="polite">
+        <span class="question-number-badge" id="question-number-badge">Item 1 de 33</span>
+        <h3 class="question-title" id="question-title">Texto da pergunta aqui...</h3>
+
+        <div class="options-group">
+          <button type="button" class="option-btn" id="option-a" tabindex="0">
+            <div class="option-indicator"></div>
+            <div class="option-text" id="option-text-a">Alternativa A</div>
+          </button>
+
+          <button type="button" class="option-btn" id="option-b" tabindex="0">
+            <div class="option-indicator"></div>
+            <div class="option-text" id="option-text-b">Alternativa B</div>
+          </button>
+        </div>
+
+        <div class="validation-notice" id="validation-notice">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+          <span>Por favor, selecione uma das duas alternativas para continuar.</span>
+        </div>
+      </div>
+
+      <!-- Controles de Navegação -->
+      <div class="nav-controls">
+        <button type="button" class="btn btn-secondary" id="btn-prev">Anterior</button>
+        <button type="button" class="btn btn-primary" id="btn-next">
+          <span>Próxima</span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- TELA 4: Resultado -->
+    <section class="screen" id="screen-result">
+      <!-- Conteúdo dinâmico injetado via app.js -->
+      <div id="result-content"></div>
+
+      <!-- Botões de Ação do Resultado -->
+      <div class="actions-grid">
+        <button type="button" class="btn btn-share btn-block" id="btn-share">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+          <span>Compartilhar Resultado</span>
+        </button>
+
+        <button type="button" class="btn btn-pdf btn-block" id="btn-pdf">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span>Salvar Relatório em PDF</span>
+        </button>
+
+        <button type="button" class="btn btn-restart btn-block" id="btn-restart">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <span>Refazer o Teste</span>
+        </button>
+      </div>
+
+      <footer class="app-footer">
+        Célula Esperança • Uma jornada de autoconhecimento e crescimento em Cristo
+      </footer>
+    </section>
+
+  </div>
+
+  <!-- Modal de Confirmação para Reiniciar -->
+  <div class="modal-overlay" id="modal-reset" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <h3 class="modal-title" id="modal-title">Reiniciar o teste?</h3>
+      <p class="modal-desc">
+        Tem certeza que deseja recomeçar? Todas as suas respostas atuais serão descartadas e você voltará ao início.
+      </p>
+      <div class="modal-buttons">
+        <button type="button" class="btn btn-secondary" style="flex:1;" id="btn-modal-cancel">Cancelar</button>
+        <button type="button" class="btn btn-primary" style="flex:1; background-color:var(--color-error);" id="btn-modal-confirm">Sim, Reiniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de Notificação -->
+  <div class="toast-msg" id="toast-msg" role="status" aria-live="polite">Notificação</div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
