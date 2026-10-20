@@ -1418,6 +1418,21 @@ h1.hero-title {
   background: #FFFFFF !important;
 }
 
+.pdf-export-mode .quadrant-section {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+  margin: 16px auto !important;
+  padding: 10px !important;
+  background: #FFFFFF !important;
+}
+
+.pdf-export-mode .quadrant-box {
+  width: 280px !important;
+  max-width: 280px !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
 .pdf-export-mode .quadrant-section,
 .pdf-export-mode .scores-grid,
 .pdf-export-mode .nuance-banner,

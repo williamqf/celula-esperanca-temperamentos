@@ -443,38 +443,61 @@
           <div class="quadrant-section">
             <div class="quadrant-title">Mapa dos 4 Temperamentos e Sua Posição</div>
             <div class="quadrant-box">
-              <svg viewBox="0 0 240 240" style="width:100%; height:auto; overflow:visible;">
+              <svg id="quadrant-svg" viewBox="0 0 280 280" width="280" height="280" style="width:100%; max-width:280px; height:auto; overflow:visible; display:block; margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
                 <!-- Fundo do Círculo -->
-                <circle cx="120" cy="120" r="100" fill="#F8FAF7" stroke="#E2DFD6" stroke-width="1.5" />
+                <circle cx="140" cy="140" r="110" fill="#F8FAF7" stroke="#CBD5E1" stroke-width="2" />
                 
-                <!-- Quadrante Sanguíneo (Top Left) -->
-                <path d="M 120 120 L 120 20 A 100 100 0 0 0 20 120 Z" fill="${t.id === 'sanguineo' ? 'rgba(36, 59, 50, 0.12)' : 'transparent'}" />
-                <!-- Quadrante Colérico (Top Right) -->
-                <path d="M 120 120 L 220 120 A 100 100 0 0 0 120 20 Z" fill="${t.id === 'colerico' ? 'rgba(36, 59, 50, 0.12)' : 'transparent'}" />
-                <!-- Quadrante Fleumático (Bottom Left) -->
-                <path d="M 120 120 L 20 120 A 100 100 0 0 0 120 220 Z" fill="${t.id === 'fleumatico' ? 'rgba(36, 59, 50, 0.12)' : 'transparent'}" />
-                <!-- Quadrante Melancólico (Bottom Right) -->
-                <path d="M 120 120 L 120 220 A 100 100 0 0 0 220 120 Z" fill="${t.id === 'melancolico' ? 'rgba(36, 59, 50, 0.12)' : 'transparent'}" />
+                <!-- Quadrantes Coloridos com Preenchimento Nitido -->
+                <!-- Sanguíneo (Top-Left: Quente + Úmido) -->
+                <path d="M 140 140 L 140 30 A 110 110 0 0 0 30 140 Z" fill="${t.id === 'sanguineo' ? '#D5E6DA' : '#F1F5F0'}" stroke="#CBD5E1" stroke-width="1" />
+                <!-- Colérico (Top-Right: Quente + Seco) -->
+                <path d="M 140 140 L 250 140 A 110 110 0 0 0 140 30 Z" fill="${t.id === 'colerico' ? '#D5E6DA' : '#F7F6F2'}" stroke="#CBD5E1" stroke-width="1" />
+                <!-- Fleumático (Bottom-Left: Frio + Úmido) -->
+                <path d="M 140 140 L 30 140 A 110 110 0 0 0 140 250 Z" fill="${t.id === 'fleumatico' ? '#D5E6DA' : '#F2F6F7'}" stroke="#CBD5E1" stroke-width="1" />
+                <!-- Melancólico (Bottom-Right: Frio + Seco) -->
+                <path d="M 140 140 L 140 250 A 110 110 0 0 0 250 140 Z" fill="${t.id === 'melancolico' ? '#D5E6DA' : '#F6F3EF'}" stroke="#CBD5E1" stroke-width="1" />
 
-                <!-- Eixos Cruzados -->
-                <line x1="120" y1="15" x2="120" y2="225" stroke="#343936" stroke-width="1.5" stroke-dasharray="3,3" />
-                <line x1="15" y1="120" x2="225" y2="120" stroke="#343936" stroke-width="1.5" stroke-dasharray="3,3" />
+                <!-- Eixos Cruzados Principais -->
+                <line x1="140" y1="22" x2="140" y2="258" stroke="#243B32" stroke-width="2" stroke-dasharray="4,4" />
+                <line x1="22" y1="140" x2="258" y2="140" stroke="#243B32" stroke-width="2" stroke-dasharray="4,4" />
 
-                <!-- Rótulos dos Eixos -->
-                <text x="120" y="12" text-anchor="middle" font-size="9" font-weight="700" fill="#243B32">QUENTE</text>
-                <text x="120" y="235" text-anchor="middle" font-size="9" font-weight="700" fill="#243B32">FRIO</text>
-                <text x="6" y="123" text-anchor="start" font-size="9" font-weight="700" fill="#243B32">ÚMIDO</text>
-                <text x="234" y="123" text-anchor="end" font-size="9" font-weight="700" fill="#243B32">SECO</text>
+                <!-- Rótulos dos Eixos (Polos) com Caixas de Leitura Nitidas -->
+                <rect x="108" y="4" width="64" height="20" rx="4" fill="#243B32" />
+                <text x="140" y="18" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif">QUENTE</text>
 
-                <!-- Nomes dos Quadrantes -->
-                <text x="65" y="70" text-anchor="middle" font-size="9" font-weight="${t.id === 'sanguineo' ? '800' : '500'}" fill="${t.id === 'sanguineo' ? '#243B32' : '#888'}">Sanguíneo</text>
-                <text x="175" y="70" text-anchor="middle" font-size="9" font-weight="${t.id === 'colerico' ? '800' : '500'}" fill="${t.id === 'colerico' ? '#243B32' : '#888'}">Colérico</text>
-                <text x="65" y="175" text-anchor="middle" font-size="9" font-weight="${t.id === 'fleumatico' ? '800' : '500'}" fill="${t.id === 'fleumatico' ? '#243B32' : '#888'}">Fleumático</text>
-                <text x="175" y="175" text-anchor="middle" font-size="9" font-weight="${t.id === 'melancolico' ? '800' : '500'}" fill="${t.id === 'melancolico' ? '#243B32' : '#888'}">Melancólico</text>
+                <rect x="112" y="256" width="56" height="20" rx="4" fill="#243B32" />
+                <text x="140" y="270" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif">FRIO</text>
 
-                <!-- Ponto do Participante -->
-                <circle cx="${markerX.toFixed(1)}" cy="${markerY.toFixed(1)}" r="7" fill="#243B32" stroke="#FFFFFF" stroke-width="2.5" />
-                <circle cx="${markerX.toFixed(1)}" cy="${markerY.toFixed(1)}" r="12" fill="none" stroke="#243B32" stroke-width="1" opacity="0.4" />
+                <rect x="0" y="130" width="54" height="20" rx="4" fill="#243B32" />
+                <text x="27" y="144" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif">ÚMIDO</text>
+
+                <rect x="226" y="130" width="54" height="20" rx="4" fill="#243B32" />
+                <text x="253" y="144" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif">SECO</text>
+
+                <!-- Nomes dos Quadrantes com Destaque -->
+                <!-- Sanguíneo (Top-Left) -->
+                <rect x="52" y="72" width="62" height="22" rx="4" fill="${t.id === 'sanguineo' ? '#243B32' : 'rgba(255,255,255,0.85)'}" stroke="${t.id === 'sanguineo' ? '#243B32' : '#CBD5E1'}" stroke-width="1" />
+                <text x="83" y="87" text-anchor="middle" font-size="11" font-weight="${t.id === 'sanguineo' ? '800' : '600'}" fill="${t.id === 'sanguineo' ? '#FFFFFF' : '#475569'}" font-family="system-ui, -apple-system, sans-serif">Sanguíneo</text>
+
+                <!-- Colérico (Top-Right) -->
+                <rect x="166" y="72" width="60" height="22" rx="4" fill="${t.id === 'colerico' ? '#243B32' : 'rgba(255,255,255,0.85)'}" stroke="${t.id === 'colerico' ? '#243B32' : '#CBD5E1'}" stroke-width="1" />
+                <text x="196" y="87" text-anchor="middle" font-size="11" font-weight="${t.id === 'colerico' ? '800' : '600'}" fill="${t.id === 'colerico' ? '#FFFFFF' : '#475569'}" font-family="system-ui, -apple-system, sans-serif">Colérico</text>
+
+                <!-- Fleumático (Bottom-Left) -->
+                <rect x="50" y="186" width="66" height="22" rx="4" fill="${t.id === 'fleumatico' ? '#243B32' : 'rgba(255,255,255,0.85)'}" stroke="${t.id === 'fleumatico' ? '#243B32' : '#CBD5E1'}" stroke-width="1" />
+                <text x="83" y="201" text-anchor="middle" font-size="11" font-weight="${t.id === 'fleumatico' ? '800' : '600'}" fill="${t.id === 'fleumatico' ? '#FFFFFF' : '#475569'}" font-family="system-ui, -apple-system, sans-serif">Fleumático</text>
+
+                <!-- Melancólico (Bottom-Right) -->
+                <rect x="162" y="186" width="70" height="22" rx="4" fill="${t.id === 'melancolico' ? '#243B32' : 'rgba(255,255,255,0.85)'}" stroke="${t.id === 'melancolico' ? '#243B32' : '#CBD5E1'}" stroke-width="1" />
+                <text x="197" y="201" text-anchor="middle" font-size="11" font-weight="${t.id === 'melancolico' ? '800' : '600'}" fill="${t.id === 'melancolico' ? '#FFFFFF' : '#475569'}" font-family="system-ui, -apple-system, sans-serif">Melancólico</text>
+
+                <!-- Ponto do Participante com Alto Contraste -->
+                <!-- Aura de Pulso -->
+                <circle cx="${(140 + ((s.seco - s.umido) / 12) * 88).toFixed(1)}" cy="${(140 + ((s.frio - s.quente) / 21) * 88).toFixed(1)}" r="14" fill="#243B32" fill-opacity="0.22" />
+                <!-- Anel Branco -->
+                <circle cx="${(140 + ((s.seco - s.umido) / 12) * 88).toFixed(1)}" cy="${(140 + ((s.frio - s.quente) / 21) * 88).toFixed(1)}" r="8" fill="#FFFFFF" stroke="#243B32" stroke-width="2" />
+                <!-- Núcleo do Ponto -->
+                <circle cx="${(140 + ((s.seco - s.umido) / 12) * 88).toFixed(1)}" cy="${(140 + ((s.frio - s.quente) / 21) * 88).toFixed(1)}" r="5" fill="#243B32" />
               </svg>
             </div>
           </div>
@@ -723,7 +746,57 @@
       accordions.forEach(acc => acc.setAttribute('open', 'true'));
       printableArea.classList.add('pdf-export-mode');
 
-      // 3. Garantir scroll no topo para o html2canvas não calcular offsets vazios
+      // 3. Rasterizar o SVG do Mapa para imagem PNG de alta resolução para fidelidade máxima no PDF
+      const svgEl = document.getElementById('quadrant-svg');
+      let restoreSvg = null;
+      if (svgEl) {
+        try {
+          const svgData = new XMLSerializer().serializeToString(svgEl);
+          const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+          const blobUrl = URL.createObjectURL(svgBlob);
+          const rasterImg = document.createElement('img');
+          
+          await new Promise((resolve) => {
+            rasterImg.onload = () => {
+              const canvas = document.createElement('canvas');
+              canvas.width = 560; // 2x para nitidez cristalina
+              canvas.height = 560;
+              const ctx = canvas.getContext('2d');
+              ctx.fillStyle = '#FFFFFF';
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+              ctx.drawImage(rasterImg, 0, 0, canvas.width, canvas.height);
+              
+              const pngImg = document.createElement('img');
+              pngImg.src = canvas.toDataURL('image/png');
+              pngImg.id = 'quadrant-png-replacement';
+              pngImg.style.width = '100%';
+              pngImg.style.maxWidth = '280px';
+              pngImg.style.height = 'auto';
+              pngImg.style.display = 'block';
+              pngImg.style.margin = '0 auto';
+              
+              svgEl.parentNode.insertBefore(pngImg, svgEl);
+              svgEl.style.display = 'none';
+
+              restoreSvg = () => {
+                svgEl.style.display = 'block';
+                if (pngImg.parentNode) pngImg.parentNode.removeChild(pngImg);
+                URL.revokeObjectURL(blobUrl);
+              };
+              resolve();
+            };
+            rasterImg.onerror = () => {
+              URL.revokeObjectURL(blobUrl);
+              resolve(); // Segue com SVG nativo caso falhe
+            };
+            rasterImg.src = blobUrl;
+          });
+        } catch (e) {
+          console.warn('Fallback SVG rasterizer:', e);
+        }
+      }
+
+      // 4. Garantir scroll no topo para o html2canvas não calcular offsets vazios
       window.scrollTo(0, 0);
 
       // Pequena pausa para o navegador aplicar a renderização expandida
@@ -752,7 +825,8 @@
         console.error('Erro no html2pdf:', err);
         window.print();
       } finally {
-        // Restaurar estado visual da tela
+        // Restaurar SVG original e estado visual da tela
+        if (restoreSvg) restoreSvg();
         printableArea.classList.remove('pdf-export-mode');
         accordions.forEach((acc, idx) => {
           if (!originalStates[idx]) {
