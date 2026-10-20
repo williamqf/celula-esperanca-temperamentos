@@ -1387,7 +1387,72 @@ h1.hero-title {
   line-height: 1.45;
 }
 
-/* Modo de Impressão e PDF */
+/* ===================================================================
+   OTIMIZAÇÃO PARA GERAÇÃO DE PDF E IMPRESSÃO
+   =================================================================== */
+
+/* Classe aplicada temporariamente durante a geração de PDF via html2pdf */
+.pdf-export-mode {
+  width: 760px !important;
+  max-width: 760px !important;
+  background: #FFFFFF !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+.pdf-export-mode .result-card-header {
+  border-radius: 0 !important;
+  padding: 24px 20px !important;
+  background: #243B32 !important;
+  color: #FFFFFF !important;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.pdf-export-mode .result-body {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 20px !important;
+  background: #FFFFFF !important;
+}
+
+.pdf-export-mode .quadrant-section,
+.pdf-export-mode .scores-grid,
+.pdf-export-mode .nuance-banner,
+.pdf-export-mode .trait-item,
+.pdf-export-mode .scripture-card,
+.pdf-export-mode .celula-invite-card,
+.pdf-export-mode .pdf-avoid-break {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+
+.pdf-export-mode .result-accordion-item {
+  box-shadow: none !important;
+  border: 1px solid #DCD8CE !important;
+  margin-bottom: 12px !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+
+.pdf-export-mode .accordion-chevron {
+  display: none !important;
+}
+
+.pdf-export-mode .accordion-content {
+  display: block !important;
+  animation: none !important;
+  padding: 14px 16px !important;
+}
+
+.pdf-export-mode .btn-invite-maps,
+.pdf-export-mode .btn-invite-whatsapp {
+  box-shadow: none !important;
+}
+
+/* Modo de Impressão Nativa do Navegador */
 @media print {
   body {
     background-color: #fff !important;
@@ -1399,13 +1464,15 @@ h1.hero-title {
   .actions-grid,
   .header-action-btn,
   .modal-overlay,
-  .toast-msg {
+  .toast-msg,
+  .accordion-chevron {
     display: none !important;
   }
 
   .app-container {
     max-width: 100% !important;
     padding: 0 !important;
+    margin: 0 !important;
   }
 
   .card, .result-body {
@@ -1419,6 +1486,24 @@ h1.hero-title {
     color: #fff !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .quadrant-section,
+  .scores-grid,
+  .nuance-banner,
+  .trait-item,
+  .scripture-card,
+  .celula-invite-card,
+  .result-accordion-item {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .accordion-content {
+    display: block !important;
+    animation: none !important;
   }
 
   .scripture-card {

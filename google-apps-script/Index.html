@@ -1405,7 +1405,72 @@ h1.hero-title {
   line-height: 1.45;
 }
 
-/* Modo de Impressão e PDF */
+/* ===================================================================
+   OTIMIZAÇÃO PARA GERAÇÃO DE PDF E IMPRESSÃO
+   =================================================================== */
+
+/* Classe aplicada temporariamente durante a geração de PDF via html2pdf */
+.pdf-export-mode {
+  width: 760px !important;
+  max-width: 760px !important;
+  background: #FFFFFF !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+.pdf-export-mode .result-card-header {
+  border-radius: 0 !important;
+  padding: 24px 20px !important;
+  background: #243B32 !important;
+  color: #FFFFFF !important;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.pdf-export-mode .result-body {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 20px !important;
+  background: #FFFFFF !important;
+}
+
+.pdf-export-mode .quadrant-section,
+.pdf-export-mode .scores-grid,
+.pdf-export-mode .nuance-banner,
+.pdf-export-mode .trait-item,
+.pdf-export-mode .scripture-card,
+.pdf-export-mode .celula-invite-card,
+.pdf-export-mode .pdf-avoid-break {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+
+.pdf-export-mode .result-accordion-item {
+  box-shadow: none !important;
+  border: 1px solid #DCD8CE !important;
+  margin-bottom: 12px !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+
+.pdf-export-mode .accordion-chevron {
+  display: none !important;
+}
+
+.pdf-export-mode .accordion-content {
+  display: block !important;
+  animation: none !important;
+  padding: 14px 16px !important;
+}
+
+.pdf-export-mode .btn-invite-maps,
+.pdf-export-mode .btn-invite-whatsapp {
+  box-shadow: none !important;
+}
+
+/* Modo de Impressão Nativa do Navegador */
 @media print {
   body {
     background-color: #fff !important;
@@ -1417,13 +1482,15 @@ h1.hero-title {
   .actions-grid,
   .header-action-btn,
   .modal-overlay,
-  .toast-msg {
+  .toast-msg,
+  .accordion-chevron {
     display: none !important;
   }
 
   .app-container {
     max-width: 100% !important;
     padding: 0 !important;
+    margin: 0 !important;
   }
 
   .card, .result-body {
@@ -1437,6 +1504,24 @@ h1.hero-title {
     color: #fff !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .quadrant-section,
+  .scores-grid,
+  .nuance-banner,
+  .trait-item,
+  .scripture-card,
+  .celula-invite-card,
+  .result-accordion-item {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .accordion-content {
+    display: block !important;
+    animation: none !important;
   }
 
   .scripture-card {
@@ -3183,7 +3268,7 @@ if (typeof module !== "undefined" && module.exports) {
   }
 
   // Geração de PDF Local
-  function handleGeneratePdf() {
+  async function handleGeneratePdf() {
     const printableArea = document.getElementById('pdf-printable-area');
     if (!printableArea) {
       window.print();
@@ -3193,21 +3278,51 @@ if (typeof module !== "undefined" && module.exports) {
     showToast('Preparando seu PDF...');
 
     if (typeof html2pdf !== 'undefined') {
+      // 1. Salvar estados originais dos acordeões
+      const accordions = Array.from(printableArea.querySelectorAll('.result-accordion-item'));
+      const originalStates = accordions.map(acc => acc.hasAttribute('open'));
+
+      // 2. Abrir todos os acordeões e adicionar classe de exportação limpa
+      accordions.forEach(acc => acc.setAttribute('open', 'true'));
+      printableArea.classList.add('pdf-export-mode');
+
+      // 3. Garantir scroll no topo para o html2canvas não calcular offsets vazios
+      window.scrollTo(0, 0);
+
+      // Pequena pausa para o navegador aplicar a renderização expandida
+      await new Promise(resolve => setTimeout(resolve, 200));
+
       const opt = {
-        margin: [10, 10, 10, 10],
-        filename: `Temperamento_${state.calculatedResult.temperament.name}_CelulaEsperanca.pdf`,
+        margin: [10, 8, 10, 8],
+        filename: `Temperamento_${state.calculatedResult ? state.calculatedResult.temperament.name : 'Resultado'}_CelulaEsperanca.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, logging: false },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          scrollY: 0,
+          scrollX: 0,
+          windowWidth: 800
+        },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak: { mode: ['css', 'legacy'] }
       };
 
-      html2pdf().set(opt).from(printableArea).save().then(() => {
+      try {
+        await html2pdf().set(opt).from(printableArea).save();
         showToast('PDF salvo com sucesso!');
-      }).catch((err) => {
+      } catch (err) {
         console.error('Erro no html2pdf:', err);
         window.print();
-      });
+      } finally {
+        // Restaurar estado visual da tela
+        printableArea.classList.remove('pdf-export-mode');
+        accordions.forEach((acc, idx) => {
+          if (!originalStates[idx]) {
+            acc.removeAttribute('open');
+          }
+        });
+      }
     } else {
       // Fallback para impressão nativa do navegador
       window.print();

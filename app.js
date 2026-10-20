@@ -705,7 +705,7 @@
   }
 
   // Geração de PDF Local
-  function handleGeneratePdf() {
+  async function handleGeneratePdf() {
     const printableArea = document.getElementById('pdf-printable-area');
     if (!printableArea) {
       window.print();
@@ -715,21 +715,51 @@
     showToast('Preparando seu PDF...');
 
     if (typeof html2pdf !== 'undefined') {
+      // 1. Salvar estados originais dos acordeões
+      const accordions = Array.from(printableArea.querySelectorAll('.result-accordion-item'));
+      const originalStates = accordions.map(acc => acc.hasAttribute('open'));
+
+      // 2. Abrir todos os acordeões e adicionar classe de exportação limpa
+      accordions.forEach(acc => acc.setAttribute('open', 'true'));
+      printableArea.classList.add('pdf-export-mode');
+
+      // 3. Garantir scroll no topo para o html2canvas não calcular offsets vazios
+      window.scrollTo(0, 0);
+
+      // Pequena pausa para o navegador aplicar a renderização expandida
+      await new Promise(resolve => setTimeout(resolve, 200));
+
       const opt = {
-        margin: [10, 10, 10, 10],
-        filename: `Temperamento_${state.calculatedResult.temperament.name}_CelulaEsperanca.pdf`,
+        margin: [10, 8, 10, 8],
+        filename: `Temperamento_${state.calculatedResult ? state.calculatedResult.temperament.name : 'Resultado'}_CelulaEsperanca.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, logging: false },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          scrollY: 0,
+          scrollX: 0,
+          windowWidth: 800
+        },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak: { mode: ['css', 'legacy'] }
       };
 
-      html2pdf().set(opt).from(printableArea).save().then(() => {
+      try {
+        await html2pdf().set(opt).from(printableArea).save();
         showToast('PDF salvo com sucesso!');
-      }).catch((err) => {
+      } catch (err) {
         console.error('Erro no html2pdf:', err);
         window.print();
-      });
+      } finally {
+        // Restaurar estado visual da tela
+        printableArea.classList.remove('pdf-export-mode');
+        accordions.forEach((acc, idx) => {
+          if (!originalStates[idx]) {
+            acc.removeAttribute('open');
+          }
+        });
+      }
     } else {
       // Fallback para impressão nativa do navegador
       window.print();
